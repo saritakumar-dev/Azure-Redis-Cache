@@ -35,7 +35,7 @@ Local Testing: Use a Docker container running Redis locally for your development
 ⚡ Event-Driven Logic (Redis Triggers)
 To ensure the catalog remains synchronized and reactive, we use Azure Functions with Redis Keyspace Notifications.
 
-### ⚡ Redis Trigger Scenarios
+# Redis Trigger Scenarios
 
 
 | Feature | Redis Channel to Trigger On | Project Purpose |
