@@ -1,0 +1,27 @@
+---
+name: "Feature: Manual Cache Invalidation"
+about: Add logic to purge Redis keys when Cosmos DB records are updated.
+title: "[FEATURE] Implement Cache Invalidation for Product Updates"
+labels: enhancement, data-consistency
+assignees: ''
+
+---
+
+## 🧩 Feature Overview
+Currently, the application relies on **TTL (Absolute/Sliding)** to refresh data. We need to implement a proactive "Purge on Write" strategy to ensure data consistency immediately after a database update.
+
+## 🛠️ Tasks
+- [ ] Modify `ProductRepository.UpdateProductAsync` to accept the Redis key.
+- [ ] Implement `db.KeyDeleteAsync(productKey)` after a successful Cosmos DB Upsert.
+- [ ] Add unit tests to verify the cache is empty after a product update.
+- [ ] **Optional:** Implement a "Broadcast" pattern if multiple cache layers exist.
+
+## 📚 Technical Context
+- **Pattern:** Cache-Aside (Invalidation Phase)
+- **Primary Service:** Azure Cache for Redis
+- **Secondary Service:** Azure Cosmos DB
+- **Related Docs:** [Microsoft: Cache-Aside Invalidation Strategy](https://microsoft.com)
+
+## ✅ Definition of Done
+- Redis key is removed immediately upon `HTTP PUT/PATCH` requests.
+- No stale data is served from Redis after a successful database commit.
