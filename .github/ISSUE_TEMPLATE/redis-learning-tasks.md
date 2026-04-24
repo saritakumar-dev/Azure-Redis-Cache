@@ -34,6 +34,7 @@ Local Testing: Use a Docker container running Redis locally for your development
 
 ⚡ Event-Driven Logic (Redis Triggers)
 To ensure the catalog remains synchronized and reactive, we use Azure Functions with Redis Keyspace Notifications.
+
 Feature	Redis Channel to Trigger On	Project Purpose
 Proactive Refresh	__keyevent@0__:expired	Automatically refill cache from the DB when TTL expires so the next user hits a "warm" cache.
 Inventory Alert	__keyevent@0__:set	Monitor stock levels; trigger a "Low Stock" email or notification if the new value falls below 5.
