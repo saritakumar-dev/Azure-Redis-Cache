@@ -47,7 +47,9 @@ To ensure the catalog remains synchronized and reactive, we use Azure Functions 
 
 #### Important Best Practices
 Invalidate on Write: When updating a product in your database, always delete the corresponding key from Redis to prevent serving stale data.
+
 Handle Failures: Ensure your app degrades gracefully. If Azure Cache for Redis is unavailable, the app should still function by querying the database directly.
+
 Connection Lifecycle: Use a single, long-lived ConnectionMultiplexer instance rather than opening and closing connections for every request.
 
 
